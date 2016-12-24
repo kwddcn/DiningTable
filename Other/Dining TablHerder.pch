@@ -1,0 +1,12 @@
+//
+//  Dining TablHerder.pch
+//  DiningTable
+//
+//  Created by mac on 2016/12/22.
+//  Copyright © 2016年 test. All rights reserved.
+//
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>
+#ifndef Dining_TablHerder_pch
+#define Dining_TablHerder_pch
+
+#endif /* Dining_TablHerder_pch */

@@ -43,7 +43,13 @@
     Mine.tabBarItem.image = [UIImage imageNamed:@"Image-3"];
     UINavigationController *navmine = [[UINavigationController alloc] initWithRootViewController:Mine];
     
-    self.viewControllers=@[navhome,navnear,navmine];
+    informationViewController * information=[[informationViewController alloc]init];
+    information.tabBarItem.title=@"菜单发布";
+    information.tabBarItem.image=[UIImage imageNamed:@"image-4"];
+    UINavigationController * navinformation=[[UINavigationController alloc]initWithRootViewController:information];
+    
+    
+    self.viewControllers=@[navhome,navnear,navmine,navinformation];
     
     
     
