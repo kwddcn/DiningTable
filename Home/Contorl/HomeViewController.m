@@ -13,6 +13,9 @@
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)LodingView * loding;
 @property(nonatomic,strong)UITableView * table;
+@property(nonatomic,strong)NSArray * array1;
+@property(nonatomic,strong)NSArray * array2;
+@property(nonatomic,strong)NSMutableArray * temp;
 @end
 
 @implementation HomeViewController
@@ -26,40 +29,46 @@
     }
     return _table;
 }
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
-//    self.loding=[[LodingView alloc]initWithFrame:self.view.frame];
-//    [self.loding showLoadingTo:self.view];
     self.view.backgroundColor=[UIColor purpleColor];
     self.table.mj_header=[TableHeaderRefresh headerWithRefreshingTarget:self refreshingAction:@selector(LodingNewData)];
     self.table.mj_footer=[TableFooterRefresh footerWithRefreshingTarget:self refreshingAction:@selector(LodingOtherData)];
     [self.view addSubview:_table];
-
-  
+    //等待页面
+    self.loding=[[LodingView alloc]initWithFrame:self.view.frame];
+    [self.loding showLoadingTo:self.table];
+//    加载完成后隐藏加载动画a1/
+//    [self.loding dismiss];
 }
 -(void)LodingNewData{
-    NSLog(@"这是上拉加载");
+    [self.table.mj_header endRefreshing];
+
+
 }
 -(void)LodingOtherData{
-    NSLog(@"这是下拉刷新");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.table.mj_footer endRefreshing];
+    });
+
 }
 #pragma 代理方法的实现
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 30;
-}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"cc"];
     if (!cell) {
         cell=[[UITableViewCell alloc]init];
     }
+    cell.textLabel.text=self.temp[indexPath.row];
     return cell;
     
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _temp.count;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

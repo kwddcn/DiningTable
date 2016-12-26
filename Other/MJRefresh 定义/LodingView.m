@@ -63,7 +63,7 @@
 {
     
     //创建显示文字
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(135, 460,100,30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.center.x -55,self.center.y,120,120)];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:15];
     label.text = @"正在加载哦,亲!";

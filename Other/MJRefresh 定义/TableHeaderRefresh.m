@@ -16,7 +16,7 @@
     
     //舍子普通状态的动画图片
     NSMutableArray *idleImages = [NSMutableArray array];
-    //下啦的图片。。
+    //下拉的图片。。
     UIImage *imageBegin = [UIImage imageNamed:@"pullRefresh"];
     [idleImages addObject:imageBegin];
     [self setImages:idleImages forState:MJRefreshStateIdle];
@@ -34,7 +34,7 @@
 //    循环传入自己的图片注意命名和图片数量
     for (NSUInteger i = 0; i < 10; i ++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Refresh%ld",(unsigned long)i]];
-        NSLog(@"%lu",(unsigned long)i);
+//        NSLog(@"%lu",(unsigned long)i);
         [refreshImages addObject:image];
     }
     
@@ -52,15 +52,14 @@
      **/
 //    设置图片和刷新状态
     [self setImages:refreshImages forState:MJRefreshStateRefreshing];
-    
     //隐藏时间
     self.lastUpdatedTimeLabel.hidden = YES;
     
     //隐藏状态
     self.stateLabel.hidden = YES;
     
-    //设置高度
-    self.mj_h = 60;
+    //设置图片动画的高度
+    self.mj_h = 120;
 }
 
 @end
