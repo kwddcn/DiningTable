@@ -38,48 +38,48 @@
     return self;
 }
 //视图
-- (void)showLoadingTo:(UIView *)view
+- (void)showLoadingTo:(UIView *)view name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL)lab length:(int)length
 {
     self.backgroundColor = [UIColor whiteColor];
     //播放加载动画
-    [self creatLoadImage];
+    [self creatLoadImage:imageName CGMake:rect Bool:lab length:length];
     
     [view addSubview:self];
 }
 //窗体
-- (void)showLoadViewTo:(UIWindow *)window
+- (void)showLoadViewTo:(UIWindow *)window name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL) lab length:(int)length
 {
     self.backgroundColor = [UIColor whiteColor];
     //播放加载动画
-    [self creatLoadImage];
+    [self creatLoadImage:imageName CGMake:rect Bool:lab length:length];
     
     [window addSubview:self];
 }
 
-
 #pragma mark -
 #pragma makr - 接口方法
-- (void)creatLoadImage
+- (void)creatLoadImage:(NSString *)imageName CGMake:(CGRect)rect Bool:(BOOL)lab length:(int) length
 {
-    
-    //创建显示文字
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.center.x -55,self.center.y,120,120)];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:15];
-    label.text = @"正在加载哦,亲!";
-    [self addSubview:label];
-    
-    //创建图片动画
+    if (lab==YES) {
+        //创建显示文字
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.center.x -55,self.center.y,120,120)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:15];
+        label.text = @"正在加载哦,亲!";
+            [self addSubview:label];
+
+    }
+      //创建图片动画
     self.loadImageView = [[UIImageView alloc] init];
-    CGRect rect = CGRectMake(self.center.x - 30,self.center.y - 30,60,60);
-    self.loadImageView.frame = rect;
+//    CGRect  rect = CGRectMake(self.center.x - 30,self.center.y - 30,60,60);
+    self.loadImageView.frame=rect;
     
     [self addSubview:self.loadImageView];
     
     //加载图片
     if (self.loadImage.count == 0) {
-        for (int i = 0; i < 10; i++ ) {
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Refresh%ld",(unsigned long)i]];
+        for (int i = 0; i < length; i++ ) {
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld",imageName,(unsigned long)i]];
             [self.loadImage addObject:image];
         }
     }

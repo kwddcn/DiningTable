@@ -37,8 +37,9 @@
     [self.view addSubview:_table];
     //等待页面
     self.loding=[[LodingView alloc]initWithFrame:self.view.frame];
-    [self.loding showLoadingTo:self.table];
-//    加载完成后隐藏加载动画a1/
+    CGRect  rect = CGRectMake(self.table.center.x - 30,self.table.center.y - 30,60,60);
+    [self.loding showLoadingTo:self.table name:@"Refresh" CGRect:rect Bool:YES length:10];
+//    加载完成后隐藏加载动画
 //    [self.loding dismiss];
 }
 -(void)LodingNewData{

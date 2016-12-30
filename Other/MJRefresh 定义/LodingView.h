@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LodingView : UIView
-- (void)showLoadingTo:(UIView *)view;
+- (void)showLoadingTo:(UIView *)view name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL)lab length:(int) length;
 
 - (void)dismiss;
 
-- (void)showLoadViewTo:(UIWindow *)window;
+- (void)showLoadViewTo:(UIWindow *)window name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL)lab length:(int) length;
 @end

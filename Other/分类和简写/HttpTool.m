@@ -72,46 +72,46 @@ static NSString *const kBaseURLString = @"http://api2.pianke.me/";
     }];
 }
 
-#pragma mark POST上传图片
-+ (void)postWithImgPath:(NSString *)path
-                 params:(NSDictionary *)params
-                 images:(NSArray *)images
-                success:(HttpSuccessBlock)success
-                failure:(HttpFailureBlock)failure {
-    NSString *basePath  = [NSString stringWithFormat:@"%@%@", kBaseURLString, path];
-
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:basePath parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        for (NSUInteger idx = 0; idx < images.count; idx ++) {
-
-            NSDate *date = [NSDate new];
-            NSDateFormatter *df = [[NSDateFormatter alloc]init];
-            [df setDateFormat:@"yyyyMMddHHmmss"];
-            [df setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
-            
-            [formData appendPartWithFileData:images[idx] name:[NSString stringWithFormat:@"header%zi", idx + 1 ] fileName:[NSString stringWithFormat:@"%@%zi.jpg", [df stringFromDate:date], idx + 1 ] mimeType:@"image/jpg"];
-        }
-    } error:nil];
-    
-    AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    opration.responseSerializer = [AFJSONResponseSerializer serializer];
-    opration.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    [opration setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success == nil) return;
-        success(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure == nil) return;
-        failure(error);
-    }];
-    
-    [opration start];
-}
+//#pragma mark POST上传图片
+//+ (void)postWithImgPath:(NSString *)path
+//                 params:(NSDictionary *)params
+//                 images:(NSArray *)images
+//                success:(HttpSuccessBlock)success
+//                failure:(HttpFailureBlock)failure {
+//    NSString *basePath  = [NSString stringWithFormat:@"%@%@", kBaseURLString, path];
+//
+//    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:basePath parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        for (NSUInteger idx = 0; idx < images.count; idx ++) {
+//
+//            NSDate *date = [NSDate new];
+//            NSDateFormatter *df = [[NSDateFormatter alloc]init];
+//            [df setDateFormat:@"yyyyMMddHHmmss"];
+//            [df setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
+//            
+//            [formData appendPartWithFileData:images[idx] name:[NSString stringWithFormat:@"header%zi", idx + 1 ] fileName:[NSString stringWithFormat:@"%@%zi.jpg", [df stringFromDate:date], idx + 1 ] mimeType:@"image/jpg"];
+//        }
+//    } error:nil];
+//    
+//    AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+//    opration.responseSerializer = [AFJSONResponseSerializer serializer];
+//    opration.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//    
+//    [opration setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        if (success == nil) return;
+//        success(responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        if (failure == nil) return;
+//        failure(error);
+//    }];
+//    
+//    [opration start];
+//}
 
 #pragma mark -
 #pragma mark 取消网络请求
-+ (void)cancelAllRequest {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.operationQueue cancelAllOperations];
-}
+//+ (void)cancelAllRequest {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager.operationQueue cancelAllOperations];
+//}
 
 @end

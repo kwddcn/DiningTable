@@ -6,6 +6,18 @@
 //  Copyright © 2016年 test. All rights reserved.
 //
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
+#import <SMS_SDK/SMSSDK.h>
+#import <SVProgressHUD.h>
+#import "HttpTool.h"
+#import "NSString+Helper.h"
+#import "UIView+Frame.h"
+#import "UIImageView+SDWedImage.h"
+#import "SDCycleScrollView.h"
+#import "NSString+Extension.h"
+#import "UIBarButtonItem+Helper.h"
+#import "UIColor+Extension.h"
+#import <Masonry.h>
+#import "LodingView.h"
 #ifndef Dining_TablHerder_pch
 #define Dining_TablHerder_pch
 
