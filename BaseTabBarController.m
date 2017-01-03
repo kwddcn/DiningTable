@@ -43,13 +43,13 @@
     Mine.tabBarItem.image = [UIImage imageNamed:@"Image-3"];
     UINavigationController *navmine = [[UINavigationController alloc] initWithRootViewController:Mine];
     
-    //为tabBarController添加子控制器
-    informationViewController *infomation = [[informationViewController alloc] init];
-    //设置子控制器的图标等
-    infomation.tabBarItem.title = @"消息";
-    infomation.tabBarItem.image = [UIImage imageNamed:@"Image"];
-    UINavigationController * navinfoma = [[UINavigationController alloc] initWithRootViewController:infomation];
-    self.viewControllers=@[navhome,navnear,navinfoma,navmine];
+    informationViewController * information=[[informationViewController alloc]init];
+    information.tabBarItem.title=@"菜单发布";
+    information.tabBarItem.image=[UIImage imageNamed:@"image-4"];
+    UINavigationController * navinformation=[[UINavigationController alloc]initWithRootViewController:information];
+    
+    
+    self.viewControllers=@[navhome,navnear,navmine,navinformation];
     
     
     

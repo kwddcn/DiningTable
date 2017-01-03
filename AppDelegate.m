@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "BaseTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,14 +16,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    _mapManager=[[BMKMapManager alloc]init];
+    
+    [SMSSDK registerApp:@"1a45e696bdab0" withSecret:@"1a1b6d0e0098d11e2aba9084e3c0fc3d"];
+    
+    BaseTabBarController * tab=[[BaseTabBarController alloc]init];
+    self.window.rootViewController=tab;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    
 }
 
 
