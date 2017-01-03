@@ -26,25 +26,14 @@
     return _loadImage;
 }
 
-
-
-#pragma makr -
-#pragma mark -初始化方法
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        
-    }
-    return self;
-}
 //视图
 - (void)showLoadingTo:(UIView *)view name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL)lab length:(int)length
 {
     self.backgroundColor = [UIColor whiteColor];
     //播放加载动画
     [self creatLoadImage:imageName CGMake:rect Bool:lab length:length];
-    
     [view addSubview:self];
+
 }
 //窗体
 - (void)showLoadViewTo:(UIWindow *)window name:(NSString *)imageName CGRect:(CGRect)rect Bool:(BOOL) lab length:(int)length
@@ -71,7 +60,6 @@
     }
       //创建图片动画
     self.loadImageView = [[UIImageView alloc] init];
-//    CGRect  rect = CGRectMake(self.center.x - 30,self.center.y - 30,60,60);
     self.loadImageView.frame=rect;
     
     [self addSubview:self.loadImageView];
@@ -93,7 +81,6 @@
 //    开始动画
     [self.loadImageView startAnimating];
 }
-
 ///停止动画
 - (void)dismiss
 {

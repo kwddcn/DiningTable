@@ -49,7 +49,8 @@
 //    }];
     
     LoginViewControl * login=[[LoginViewControl alloc]init];
-    [self presentViewController:login animated:YES completion:nil];
+//    [self presentViewController:login animated:YES completion:nil];
+    [self.navigationController pushViewController:login animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

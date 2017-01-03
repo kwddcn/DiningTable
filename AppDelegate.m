@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BaseTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +19,10 @@
     _mapManager=[[BMKMapManager alloc]init];
     
     [SMSSDK registerApp:@"1a45e696bdab0" withSecret:@"1a1b6d0e0098d11e2aba9084e3c0fc3d"];
+    
+    BaseTabBarController * tab=[[BaseTabBarController alloc]init];
+    self.window.rootViewController=tab;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

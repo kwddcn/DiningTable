@@ -20,5 +20,7 @@
 #import "LodingView.h"
 #ifndef Dining_TablHerder_pch
 #define Dining_TablHerder_pch
+#define SCRMWidth [self.frame.size.width]
+#define SCRMHigth [self.frame.size.height]
 
 #endif /* Dining_TablHerder_pch */
